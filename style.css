@@ -1,5 +1,5 @@
 .chessboard {
-    border: 2px solid black;
+    border: 1px solid black;
     width: 100%;
     height: 100%;
 }
@@ -14,10 +14,15 @@
     flex: 1 0 12.5%;
     aspect-ratio: 1;
     box-sizing: border-box;
-    border: 0.5px solid black;
+    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 10vw;
+}
+
+.sq:hover{
+    border: 1px solid red;
 }
 
 #A8, #C8, #E8, #G8, #B7, #D7, #F7, #H7,
