@@ -1,3 +1,4 @@
+// Every Piece moves everywhere
 const move = document.querySelectorAll(".sq");
 
 let movingPiece = "";
@@ -12,9 +13,10 @@ move.forEach(function(square) {
         }
 
         else if (movingPiece !== "") {
+            document.getElementById(movingPieceId).innerHTML = "";
             square.innerHTML = movingPiece;
             movingPiece = "";
-            document.getElementById(movingPieceId).innerHTML = "";
         }
     });
 });
+
