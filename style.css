@@ -23,8 +23,12 @@
     font-size: 2em;
 }
 
-.sq:hover{
+.b:hover {
     border: 1px solid red;
+}
+
+.w:hover {
+    border: 1px solid green;
 }
 
 #A8, #C8, #E8, #G8, #B7, #D7, #F7, #H7,
