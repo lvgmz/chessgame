@@ -1,4 +1,3 @@
-// Every Piece moves everywhere
 const move = document.querySelectorAll(".sq");
 
 let movingPiece = "";
@@ -8,52 +7,52 @@ let turn = 1;
 move.forEach(function(square) {
     square.addEventListener("click", function() {
 
-        if (turn % 2 === 1) {   // white turn
-
-            // selecting a piece
-            if (movingPiece === "" && square.innerHTML !== "" && square.classList.contains('w')) {
-                movingPiece = square.innerHTML;
-                movingPieceId = square.id;
-            }
-            
-            // placing a piece on new square
-            else if (movingPiece !== "") {
-                document.getElementById(movingPieceId).innerHTML = "";
-                document.getElementById(movingPieceId).classList.remove('w');
-                square.innerHTML = movingPiece;
-                square.classList.add("w");
-                if (square.classList.contains('b')){
-                    square.classList.remove('b');
-                }
-                movingPiece = "";
-                movingPieceId = "";
-                turn++;
-            }
+        if (turn % 2 === 1) {
+            whiteTurn(square);
         }
-        else {  // black turn
-
-            // selecting piece
-            if (movingPiece === "" && square.innerHTML !== "" && square.classList.contains('b')) {
-                movingPiece = square.innerHTML;
-                movingPieceId = square.id;
-            }
-            
-            // placeing piece on new square
-            else if (movingPiece !== "") {
-                document.getElementById(movingPieceId).innerHTML = "";
-                document.getElementById(movingPieceId).classList.remove('b');
-                square.innerHTML = movingPiece;
-                square.classList.add("b");
-                if (square.classList.contains("w")){
-                    square.classList.remove("w");
-                }
-                movingPiece = "";
-                movingPieceId = "";
-                turn++;
-            }
+        else {
+            blackTurn(square);
         }
-
-
     });
 });
 
+
+function whiteTurn(square){
+    if (movingPiece === "" && square.innerHTML !== "" && square.classList.contains('w')){
+        selecting(square, 'w');
+    }
+
+    else if(movingPiece !== ""){
+        moving(square, 'w', 'b');
+    }
+}
+
+function blackTurn(square) {
+    if (movingPiece === "" && square.innerHTML !== "" && square.classList.contains('b')){
+        selecting(square, 'b');
+    }
+
+    else if(movingPiece !== ""){
+        moving(square, 'b', 'w');
+    }
+}
+
+function selecting(square, color) {
+    if (movingPiece === "" && square.innerHTML !== "" && square.classList.contains(color)) {
+        movingPiece = square.innerHTML;
+        movingPieceId = square.id;
+    }
+}
+
+function moving(square, color, remove) {
+    document.getElementById(movingPieceId).innerHTML = "";
+    document.getElementById(movingPieceId).classList.remove(color);
+    square.innerHTML = movingPiece;
+    square.classList.add(color);
+    if (square.classList.contains(remove)){
+        square.classList.remove(remove);
+    }
+    movingPiece = "";
+    movingPieceId = "";
+    turn++;
+}
