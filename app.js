@@ -22,7 +22,7 @@ function whiteTurn(square){
         selecting(square, 'w');
     }
 
-    else if(movingPiece !== ""){
+    else if(movingPiece !== "" && movingPiece !== square.innerHTML){
         moving(square, 'w', 'b');
     }
 }
@@ -32,7 +32,7 @@ function blackTurn(square) {
         selecting(square, 'b');
     }
 
-    else if(movingPiece !== ""){
+    else if(movingPiece !== "" && movingPiece !== square.innerHTML){
         moving(square, 'b', 'w');
     }
 }
